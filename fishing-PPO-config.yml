@@ -1,0 +1,16 @@
+
+fishing-ppo:
+    env: gym_fishing.envs.FishingCtsEnv
+    run: PPO
+    checkpoint_at_end: true
+    keep_checkpoints_num: 1
+    stop:
+        episode_reward_mean: 7.5
+        timesteps_total: 1000000
+    config:
+        model:
+            use_lstm: true
+        # Works for both torch and tf.
+        framework: torch
+        num_gpus: 1
+n        num_workers: 4
