@@ -132,3 +132,4 @@ dmypy.json
 # MISC
 render.csv
 .Rproj.user
+.Rhistory
