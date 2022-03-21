@@ -1,0 +1,9 @@
+{
+  "env": "gym_fishing.envs.FishingCtsEnv",
+  "framework": "torch",
+  "model": {
+    "use_lstm": true
+  },
+  "num_gpus": 1,
+  "num_workers": 4
+}

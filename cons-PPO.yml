@@ -1,0 +1,16 @@
+
+cons-v6-ppo:
+    env: gym_conservation.envs.NonStationaryV6
+    run: PPO
+    checkpoint_at_end: true
+    max_failures: 4
+    stop:
+        episode_reward_mean: 160
+        timesteps_total: 10000000
+    config:
+        lr: 0.000001
+        vf_clip_param: 40
+        framework: torch
+        num_gpus: 1
+        num_workers: 12
+        log_level: ERROR

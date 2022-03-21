@@ -1,0 +1,20 @@
+
+fishing-grid-env:
+    env:
+        grid_search:
+            - gym_fishing.envs.FishingCtsEnv
+            - gym_fishing.envs:BevertonHolt
+            - gym_fishing.envs:Ricker
+            - gym_fishing.envs.FishingTippingEnv
+    run: PPO
+    checkpoint_at_end: true
+    max_failures: 4
+    stop:
+        episode_reward_mean: 7.5
+        timesteps_total: 10000000
+    config:
+        log_level: ERROR
+        # Works for both torch and tf.
+        framework: torch
+        num_gpus: 1
+        num_workers: 12

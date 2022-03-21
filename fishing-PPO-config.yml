@@ -1,16 +1,23 @@
 
-fishing-ppo:
-    env: gym_fishing.envs.FishingCtsEnv
+fishing-v2-ppo:
+    env: gym_fishing.envs.FishingModelError
     run: PPO
     checkpoint_at_end: true
-    keep_checkpoints_num: 1
     stop:
         episode_reward_mean: 7.5
-        timesteps_total: 1000000
+        timesteps_total: 10000000
     config:
         model:
             use_lstm: true
-        # Works for both torch and tf.
+            # Max seq len for training the LSTM, defaults to 20.
+            max_seq_len: 40
+            # Size of the LSTM cell.
+            lstm_cell_size: 512
+            # Whether to feed a_{t-1} to LSTM (one-hot encoded if discrete).
+            lstm_use_prev_action: true
+            # Whether to feed r_{t-1} to LSTM.
+            lstm_use_prev_reward: true
         framework: torch
         num_gpus: 1
-n        num_workers: 4
+        num_workers: 8
+        log_level: ERROR

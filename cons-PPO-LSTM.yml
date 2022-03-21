@@ -1,0 +1,30 @@
+
+cons-v6-ppo-lstm:
+    env: gym_conservation.envs.NonStationaryV6
+    run: PPO
+    checkpoint_at_end: true
+    max_failures: 4
+    stop:
+        episode_reward_mean: 160
+        timesteps_total: 20000000
+    config:
+        rollout_fragment_length: 
+          grid_search: [1000, 500, 100]
+        lr:  0.000001
+        kl_target: 0.08
+        kl_coeff: 0.4 
+        vf_clip_param: 50
+        model:
+            use_lstm: false
+            # Max seq len for training the LSTM, defaults to 20.
+            max_seq_len: 20
+            # Size of the LSTM cell.
+            lstm_cell_size: 512
+            # Whether to feed a_{t-1} to LSTM (one-hot encoded if discrete).
+            lstm_use_prev_action: false
+            # Whether to feed r_{t-1} to LSTM.
+            lstm_use_prev_reward: false
+        framework: torch
+        num_gpus: 1
+        num_workers: 12
+        log_level: ERROR
