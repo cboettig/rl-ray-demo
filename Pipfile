@@ -17,4 +17,4 @@ stable-baselines3 = "*"
 ipykernel = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"

@@ -6,7 +6,7 @@ fishing-grid-env:
             - gym_fishing.envs:BevertonHolt
             - gym_fishing.envs:Ricker
             - gym_fishing.envs.FishingTippingEnv
-    run: PPO
+    run: ARS
     checkpoint_at_end: true
     max_failures: 4
     stop:

@@ -1,0 +1,14 @@
+
+fishing-a2c-basic:
+    env: gym_fishing.envs.FishingCtsEnv 
+    #gym_fishing.envs.FishingModelError
+    run: A2C
+    checkpoint_at_end: true
+    stop:
+        episode_reward_mean: 7.5
+        timesteps_total: 20000000
+    config:
+        framework: torch
+        num_gpus: 1
+        num_workers: 8
+        log_level: ERROR

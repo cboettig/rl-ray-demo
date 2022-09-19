@@ -1,5 +1,5 @@
 
-fishing-v2-ppo:
+fishing-model-error-ppo:
     env: gym_fishing.envs.FishingModelError
     run: PPO
     checkpoint_at_end: true
